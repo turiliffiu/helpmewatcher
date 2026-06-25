@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         HelpMeWatcher v0.2
 // @namespace    http://tampermonkey.net/
-// @version      0.2.0
+// @version      0.2.1
 // @description  Avvisa quando arriva una richiesta di tua competenza su HelpMe Delivery (scritta "N New, fai refresh") e segnala la caduta della connessione/sessione (anti-timeout). Notifiche multi-canale: suono, popup, voce, notifica di sistema.
 // @author       Salvo
 // @match        https://helpmedelivery.azure.fibercop.local/*
@@ -43,7 +43,7 @@
 
     // --- Anti-timeout ---
     wsUrlMatch:        '/ws2', // WebSocket da sorvegliare
-    reconnectGraceSec: 12,     // dopo un "close" attende tot sec: se non si riconnette -> ALLARME
+    reconnectGraceSec: 25,     // dopo un "close" attende tot sec: se non si riconnette -> ALLARME (25s assorbe i blip di rete che si ririconnettono da soli)
 
     // --- Voce (TTS) ---
     ttsLang:           'it-IT',
@@ -61,7 +61,7 @@
   const DBG  = (...a) => { if (CONFIG.debug) console.log('%c[HMW]', 'color:#7f8c8d', ...a); };
   const ts   = () => new Date().toLocaleTimeString('it-IT');
 
-  LOG('v0.2 caricato @', ts());
+  LOG('v0.2.1 caricato @', ts());
 
   // ═══════════════════════════════════════════════════════════════
   //  STATO
