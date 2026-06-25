@@ -5,6 +5,11 @@ Tutte le modifiche notevoli a questo progetto saranno documentate in questo file
 Il formato è basato su [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 e questo progetto aderisce a [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.1] - 2026-06-25
+
+### Changed
+- `reconnectGraceSec` portato da 12 a 25 secondi: la finestra di grazia ora assorbe in silenzio i blip di rete che si ririconnettono automaticamente (osservata in campo una riconnessione automatica a 18s), evitando falsi allarmi transitori. L'allarme "SUPERVISIONE INTERROTTA" scatta ora solo per i timeout reali in cui la sessione non si ripristina.
+
 ## [0.2.0] - 2026-06-23
 
 ### Added
